@@ -1,0 +1,12 @@
+{
+  "latest": {
+    "versionName": "1.0.0",
+    "versionCode": 10000,
+    "minSdkVersion": 24,
+    "releaseDate": "2026-11-09",
+    "releaseNotes": "Initial release of Message App Pro with unified SMS, WhatsApp, and Google Voice messaging.",
+    "downloadUrl": "https://github.com/nex-gen-dev/message-app-pro-updater/releases/latest/download/MessageAppPro.apk",
+    "mandatory": false
+  },
+  "minimumVersion": "1.0.0"
+}

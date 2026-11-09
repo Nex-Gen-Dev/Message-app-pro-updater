@@ -1,0 +1,28 @@
+name: Validate Release
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate version.json
+        run: |
+          python3 -c "
+          import json, sys
+          with open('version.json') as f:
+              data = json.load(f)
+          assert 'latest' in data, 'Missing latest key'
+          assert 'versionName' in data['latest'], 'Missing versionName'
+          assert 'versionCode' in data['latest'], 'Missing versionCode'
+          assert 'downloadUrl' in data['latest'], 'Missing downloadUrl'
+          assert 'minimumVersion' in data, 'Missing minimumVersion'
+          print('version.json is valid')
+          print(f\"Latest: v{data['latest']['versionName']} (code {data['latest']['versionCode']})\")
+          "
